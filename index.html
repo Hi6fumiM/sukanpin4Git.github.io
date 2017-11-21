@@ -17,7 +17,10 @@
         </p> 
         <x3d width='600px' height='400px'>
             <scene>
-                <SpotLight id='spot' on ="TRUE" beamWidth='0.9' color='0 0 1' cutOffAngle='0.78' location='0 0 12' radius='22' >
+                <background  skyColor="0 0 0"></background>
+                <!-- <directionalLight id="directional" direction='0 -1 0' on ="TRUE" intensity='2.0' shadowIntensity='0.0'> -->
+                </directionalLight>
+                
                 <transform translation='0 0 -5' scale='7.5 5 1'>
                     <shape> 
                         <appearance> 
@@ -26,69 +29,75 @@
                         <box></box> 
                     </shape>
                 </transform>
-                <shape> 
-                    <appearance> 
-                    <material diffuseColor='1 1 0'></material> 
-                    </appearance> 
-                    <sphere></sphere> 
-                </shape>
-                <transform translation='0 1.2 0'> 
+                <transform DEF="ball">
                     <shape> 
                         <appearance> 
                         <material diffuseColor='1 1 0'></material> 
                         </appearance> 
                         <sphere></sphere> 
                     </shape>
-                    <transform scale='0.2 0.2 0.2' translation='0.4 0.1 0.9' rotation="1 0 0 1.5">
+                    <transform translation='0 1.2 0'> 
                         <shape> 
                             <appearance> 
-                            <material diffuseColor='1 1 1'></material> 
+                            <material diffuseColor='1 1 0'></material> 
                             </appearance> 
-                            <Cylinder height='1' radius='0.7'></Cylinder> 
+                            <sphere></sphere> 
                         </shape>
-                        <transform scale='0.4 0.4 0.4' translation='0 0.5 0'>
+                        <transform scale='0.2 0.2 0.2' translation='0.4 0.1 0.9' rotation="1 0 0 1.5">
                             <shape> 
                                 <appearance> 
-                                <material diffuseColor='0 0 0'></material> 
+                                
+                                <material diffuseColor='1 1 1'></material> 
                                 </appearance> 
-                                <sphere></sphere> 
+                                <Cylinder height='1' radius='0.7'></Cylinder> 
+                            </shape>
+                            <transform scale='0.4 0.4 0.4' translation='0 0.5 0'>
+                                <shape> 
+                                    <appearance> 
+                                    <material diffuseColor='0 0 0'></material> 
+                                    </appearance> 
+                                    <sphere></sphere> 
+                                </shape>
+                            </transform>
+                        </transform>
+                        <transform scale='0.2 0.2 0.2' translation='-0.4 0.1 0.9' rotation="1 0 0 1.5">
+                            <shape> 
+                                <appearance> 
+                                <material diffuseColor='1 1 1'></material> 
+                                </appearance> 
+                                <Cylinder height='1' radius='0.7'></Cylinder> 
+                            </shape>
+                            <transform scale='0.4 0.4 0.4' translation='0 0.5 0'>
+                                <shape> 
+                                    <appearance> 
+                                    <material diffuseColor='0 0 0'></material> 
+                                    </appearance> 
+                                    <sphere></sphere> 
+                                </shape>
+                            </transform>
+                        </transform>
+                        <transform scale='0.1 0.1 0.1' translation='0 -0.15 1'>
+                            <shape> 
+                            <appearance> 
+                            <material diffuseColor='0 0 0'></material> 
+                            </appearance> 
+                            <sphere></sphere> 
                             </shape>
                         </transform>
                     </transform>
-                    <transform scale='0.2 0.2 0.2' translation='-0.4 0.1 0.9' rotation="1 0 0 1.5">
+                    <transform translation='0 -1.7 0'>
                         <shape> 
-                            <appearance> 
-                            <material diffuseColor='1 1 1'></material> 
+                            <appearance>
+                            <ImageTexture  url="tex.png"><ImageTexture/> 
                             </appearance> 
-                            <Cylinder height='1' radius='0.7'></Cylinder> 
-                        </shape>
-                        <transform scale='0.4 0.4 0.4' translation='0 0.5 0'>
-                            <shape> 
-                                <appearance> 
-                                <material diffuseColor='0 0 0'></material> 
-                                </appearance> 
-                                <sphere></sphere> 
-                            </shape>
-                        </transform>
-                    </transform>
-                    <transform scale='0.1 0.1 0.1' translation='0 -0.15 1'>
-                        <shape> 
-                        <appearance> 
-                        <material diffuseColor='0 0 0'></material> 
-                        </appearance> 
-                        <sphere></sphere> 
+                            <cylinder></cylinder> 
                         </shape>
                     </transform>
                 </transform>
-                <transform translation='0 -1.7 0'>
-                    <shape> 
-                        <appearance>
-                        <ImageTexture  url="tex.png"><ImageTexture/> 
-                        </appearance> 
-                        <cylinder></cylinder> 
-                    </shape>
-                </transform>
-            </SpotLight> 
+                <timeSensor DEF="time" cycleInterval="2" loop="true"></timeSensor>
+                <PositionInterpolator DEF="move" key="0 0.5 1" keyValue="0 0 0  0 3 0  0 0 0"></PositionInterpolator>
+                <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"></Route>
+                <Route fromNode="move" fromField ="value_changed" toNode="ball" toField="translation"></Route>
             </scene>
         </x3d> 
     </body> 
