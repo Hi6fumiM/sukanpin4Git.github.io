@@ -1,0 +1,93 @@
+<html> 
+    <head>
+        <title>My first X3DOM page</title>		
+        <script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script> 
+        <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'></link>
+        <style>
+            x3d
+            {
+                border:2px solid darkorange;
+            }
+        </style>
+    </head> 
+    <body> 
+        <h1>Hello, X3DOM!</h1> 
+        <p> 
+            This is my first html page with some 3d objects. 
+        </p> 
+        <x3d width='600px' height='400px'>
+            <scene>
+                <transform translation='0 0 -5' scale='7.5 5 1'>
+                    <shape> 
+                        <appearance> 
+                        <MovieTexture repeatS="false" repeatT="false" loop='true' url='"nyancat_old.mp4"'></MovieTexture>
+                        </appearance> 
+                        <box></box> 
+                    </shape>
+                </transform>
+                <shape> 
+                    <appearance> 
+                    <material diffuseColor='1 1 0'></material> 
+                    </appearance> 
+                    <sphere></sphere> 
+                </shape>
+                <transform translation='0 1.2 0'> 
+                    <shape> 
+                        <appearance> 
+                        <material diffuseColor='1 1 0'></material> 
+                        </appearance> 
+                        <sphere></sphere> 
+                    </shape>
+                    <transform scale='0.2 0.2 0.2' translation='0.4 0.1 0.9' rotation="1 0 0 1.5">
+                        <shape> 
+                            <appearance> 
+                            <material diffuseColor='1 1 1'></material> 
+                            </appearance> 
+                            <Cylinder height='1' radius='0.7'></Cylinder> 
+                        </shape>
+                        <transform scale='0.4 0.4 0.4' translation='0 0.5 0'>
+                            <shape> 
+                                <appearance> 
+                                <material diffuseColor='0 0 0'></material> 
+                                </appearance> 
+                                <sphere></sphere> 
+                            </shape>
+                        </transform>
+                    </transform>
+                    <transform scale='0.2 0.2 0.2' translation='-0.4 0.1 0.9' rotation="1 0 0 1.5">
+                        <shape> 
+                            <appearance> 
+                            <material diffuseColor='1 1 1'></material> 
+                            </appearance> 
+                            <Cylinder height='1' radius='0.7'></Cylinder> 
+                        </shape>
+                        <transform scale='0.4 0.4 0.4' translation='0 0.5 0'>
+                            <shape> 
+                                <appearance> 
+                                <material diffuseColor='0 0 0'></material> 
+                                </appearance> 
+                                <sphere></sphere> 
+                            </shape>
+                        </transform>
+                    </transform>
+                    <transform scale='0.1 0.1 0.1' translation='0 -0.15 1'>
+                        <shape> 
+                        <appearance> 
+                        <material diffuseColor='0 0 0'></material> 
+                        </appearance> 
+                        <sphere></sphere> 
+                        </shape>
+                    </transform>
+                </transform>
+                <transform translation='0 -1.7 0'>
+                    <shape> 
+                        <appearance>
+                        <ImageTexture  url="tex.png"><ImageTexture/> 
+                        </appearance> 
+                        <cylinder></cylinder> 
+                    </shape>
+                </transform>
+            </scene>
+        </x3d> 
+    </body> 
+</html>           
