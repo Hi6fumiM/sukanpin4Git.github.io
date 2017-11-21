@@ -85,6 +85,7 @@
                             </shape>
                         </transform>
                     </transform>
+                </transform>
                     <transform translation='0 -1.7 0'>
                         <shape> 
                             <appearance>
@@ -93,11 +94,14 @@
                             <cylinder></cylinder> 
                         </shape>
                     </transform>
-                </transform>
-                <timeSensor DEF="time" cycleInterval="2" loop="true"></timeSensor>
-                <PositionInterpolator DEF="move" key="0 0.5 1" keyValue="0 0 0  0 3 0  0 0 0"></PositionInterpolator>
-                <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"></Route>
-                <Route fromNode="move" fromField ="value_changed" toNode="ball" toField="translation"></Route>
+                
+                <timeSensor DEF="time" cycleInterval="0.1" loop="true"></timeSensor>
+               <!-- <PositionInterpolator DEF="move" key="0 0.5 1" keyValue="0 0 0  0 3 0  0 0 0"></PositionInterpolator> -->
+                <PositionInterpolator DEF="scaling" key="0 0.5 1" keyValue="1 1 1  1 2 1  1 1 1"></PositionInterpolator>
+                <!-- <Route fromNode="time" fromField ="fraction_changed" toNode="move" toField="set_fraction"></Route> -->
+                <Route fromNode="time" fromField ="fraction_changed" toNode="scaling" toField="set_fraction"></Route>
+                <!-- <Route fromNode="move" fromField ="value_changed" toNode="ball" toField="translation"></Route> -->
+                <Route fromNode="scaling" fromField ="value_changed" toNode="ball" toField="scale"></Route>
             </scene>
         </x3d> 
     </body> 
